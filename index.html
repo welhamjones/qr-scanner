@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1f2a37">
+  <title>QR Scanner</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><img id="logo" src="logo.jpg" alt="Company logo" width="945" height="296"></div>
+    <h1>QR Scanner</h1>
+    <span id="status" class="status" role="status" aria-live="polite">Ready</span>
+  </header>
+
+  <main>
+    <!-- Start view -->
+    <section id="startView" class="view">
+      <div class="card start">
+        <p class="hint">Tap the button below, then hold the QR code inside the frame.</p>
+        <button id="scanBtn" class="btn btn-primary btn-xl" type="button">Scan QR code</button>
+        <p id="scanError" class="error" hidden></p>
+      </div>
+    </section>
+
+    <!-- Scanner view -->
+    <section id="scanView" class="view" hidden>
+      <div class="camera">
+        <video id="video" playsinline muted></video>
+        <div class="frame" aria-hidden="true"></div>
+      </div>
+      <div class="actions">
+        <button id="cancelBtn" class="btn btn-secondary btn-large" type="button">Cancel</button>
+      </div>
+    </section>
+
+    <!-- Result view -->
+    <section id="resultView" class="view" hidden>
+      <div class="card">
+        <dl class="details">
+          <div class="row"><dt>Name</dt><dd id="fName">-</dd></div>
+          <div class="row"><dt>Date of birth</dt><dd id="fDob">-</dd></div>
+          <div class="row"><dt>Date of death</dt><dd id="fDod">-</dd></div>
+        </dl>
+        <p id="urlWarning" class="error" hidden></p>
+        <div class="actions">
+          <button id="openBtn" class="btn btn-primary btn-large" type="button">Open funeral details</button>
+          <button id="againBtn" class="btn btn-secondary btn-large" type="button">Scan next</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <canvas id="canvas" hidden></canvas>
+  <script src="jsQR.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
